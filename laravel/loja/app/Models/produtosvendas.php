@@ -15,5 +15,5 @@ class produtosvendas extends Model
                             'quantidade',
                             'valor',];
 
-    protected $table = 'produtosvendas';
+    protected $table = 'produtosvenda';
 }

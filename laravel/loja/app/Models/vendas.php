@@ -12,7 +12,17 @@ class vendas extends Model
     protected $fillable = ['id',
                             'cliente_id',
                             'vendedor_id',
-                            'data_de_venda',];
+                            'data_da_venda',];
 
     protected $table = 'vendas';
+
+    public function comprador()
+    {
+        return $this->belongsTo( clientes::class, 'clientes_id');
+    }
+
+    public function vendedor()
+    {
+        return $this->belongsTo( vendedores::class, 'vendedor_id');
+    }
 }
