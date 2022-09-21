@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\VendedoresController;
+use App\Http\Controllers\ProdutosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +38,7 @@ Route::get('/avisos', function () {
 
     return view('avisos', $avisos);
 });
+
+Route::resource('/clientes', App\Http\Controllers\ClienteController::class);
+Route::resource('/vendedores', App\Http\Controllers\VendedoresController::class);
+Route::resource('/produtos', App\Http\Controllers\ProdutosController::class);
