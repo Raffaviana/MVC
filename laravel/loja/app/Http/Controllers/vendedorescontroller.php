@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Models\vendedores;
+use App\Models\vendedores;
 
-class ClienteController extends Controller
+
+class VendedoresController extends Controller
 {
     private $qtdPorPagina = 5;
 
@@ -110,4 +111,48 @@ class ClienteController extends Controller
         return redirect()->route('vendedores.index')
                             ->with('success', 'Vendedor removido com sucesso!');
     }
+
+    public function checkVendedor(int $x):bool
+    {
+        if($x <= 1){
+            return true;
+        }
+
+        return false;
+    }
+
+    public function existeVendedor(string $nome):bool
+    {
+        $vendedores = ['Paula', 'Matheus', 'Amanda', 'Carlos'];
+
+        if ( in_array($nome, $vendedores))
+        {
+            return true;
+        }
+        return false;
+    }
+    public function getVendedor(int $id):?string
+    {
+        $vendedores = [1 => 'Paula', 2 => 'Romeu', 3 => 'Amanda', 4 => 'Carlos'];
+
+        if ( isset($vendedores[$id])){
+            return $vendedores[$id];
+        }
+        {
+            return null;
+        }
+    }
+
+    public function getVendedorJson(int $id):?string
+    {
+        $vendedores = [1 => 'Paula', 2 => 'Matheus', 3 => 'Amanda', 4 => 'Carlos'];
+
+        if ( isset($vendedores[$id])){
+            return json_encode($vendedores[$id]);
+        }
+        {
+            return null;
+        }
+    }
+
 }
